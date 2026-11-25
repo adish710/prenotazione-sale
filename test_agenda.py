@@ -3,13 +3,12 @@ from datetime import date
 
 from prenotazioni import (
     Agenda,
+    DataNonAmmessa,
+    Prenotazione,
+    PrenotazioneNonTrovata,
     Sala,
     SalaNonTrovata,
     timedelta,
-    Prenotazione,
-    DataNonAmmessa,
-    PrenotazioneNonTrovata
-    
 )
 
 
@@ -24,7 +23,7 @@ class TestAgenda(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.agenda.aggiungi_sala(duplicata)
-    
+
     def test_sala_rifiuta_codice_inesistente(self):
         with self.assertRaises(SalaNonTrovata):
             self.agenda.sala("INESISTENTE")
@@ -42,7 +41,7 @@ class TestAgenda(unittest.TestCase):
                 )
                 with self.assertRaises(DataNonAmmessa):
                     self.agenda.prenota(prenotazione, self.oggi)
-    
+
     def test_prenota_accetta_la_data_di_oggi(self):
         prenotazione = Prenotazione(
             "A2", self.oggi, "09:00", "10:00", "Mario Rossi", 10
