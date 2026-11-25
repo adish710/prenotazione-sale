@@ -25,3 +25,17 @@ class TestSegnalazioni(unittest.TestCase):
 
         self.assertEqual(id_precedente, 1)
         self.assertEqual(id_contigua, 2)
+
+    def test_partecipanti_esattamente_uguali_alla_capienza(self):
+        prenotazione = Prenotazione(
+            "R1", self.giorno, "09:00", "10:00", "Anna Verdi", 10
+        )
+
+        identificativo = self.agenda.prenota(prenotazione, self.oggi)
+
+        self.assertEqual(identificativo, 1)
+        self.assertIn(identificativo, self.agenda.prenotazioni)
+
+
+if __name__ == "__main__":
+    unittest.main()
