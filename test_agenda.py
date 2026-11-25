@@ -41,3 +41,12 @@ class TestAgenda(unittest.TestCase):
                 )
                 with self.assertRaises(DataNonAmmessa):
                     self.agenda.prenota(prenotazione, self.oggi)
+    
+    def test_prenota_accetta_la_data_di_oggi(self):
+        prenotazione = Prenotazione(
+            "A2", self.oggi, "09:00", "10:00", "Mario Rossi", 10
+        )
+
+        identificativo = self.agenda.prenota(prenotazione, self.oggi)
+
+        self.assertEqual(identificativo, 1)
