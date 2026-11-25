@@ -4,6 +4,7 @@ from datetime import date
 from prenotazioni import (
     Agenda,
     Sala,
+    SalaNonTrovata
 )
 
 
@@ -18,3 +19,7 @@ class TestAgenda(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.agenda.aggiungi_sala(duplicata)
+    
+    def test_sala_rifiuta_codice_inesistente(self):
+        with self.assertRaises(SalaNonTrovata):
+            self.agenda.sala("INESISTENTE")
