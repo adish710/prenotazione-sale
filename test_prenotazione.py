@@ -39,3 +39,14 @@ class TestPrenotazione(unittest.TestCase):
                 "Mario Rossi",
                 10,
             )
+
+    def test_durata_minuti_restituisce_la_differenza(self):
+        prenotazione = Prenotazione(*self.dati[:2], "09:00", "10:30", *self.dati[4:])
+
+        durata = prenotazione.durata_minuti()
+
+        self.assertEqual(durata, 90)
+
+
+if __name__ == "__main__":
+    unittest.main()
