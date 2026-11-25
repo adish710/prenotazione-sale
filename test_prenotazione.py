@@ -28,3 +28,14 @@ class TestPrenotazione(unittest.TestCase):
                         "Mario Rossi",
                         10,
                     )
+
+    def test_giorno_non_date_solleva_type_error(self):
+        with self.assertRaises(TypeError):
+            Prenotazione(
+                "A2",
+                "2026-11-16",
+                "09:00",
+                "10:00",
+                "Mario Rossi",
+                10,
+            )
