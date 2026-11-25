@@ -55,3 +55,11 @@ class TestAgenda(unittest.TestCase):
     def test_cancella_rifiuta_id_inesistente(self):
         with self.assertRaises(PrenotazioneNonTrovata):
             self.agenda.cancella(999)
+
+    def test_prenotazione_rifiuta_id_inesistente(self):
+        with self.assertRaises(PrenotazioneNonTrovata):
+            self.agenda.prenotazione(999)
+
+
+if __name__ == "__main__":
+    unittest.main()
