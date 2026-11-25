@@ -7,7 +7,8 @@ from prenotazioni import (
     SalaNonTrovata,
     timedelta,
     Prenotazione,
-    DataNonAmmessa
+    DataNonAmmessa,
+    PrenotazioneNonTrovata
     
 )
 
@@ -50,3 +51,7 @@ class TestAgenda(unittest.TestCase):
         identificativo = self.agenda.prenota(prenotazione, self.oggi)
 
         self.assertEqual(identificativo, 1)
+
+    def test_cancella_rifiuta_id_inesistente(self):
+        with self.assertRaises(PrenotazioneNonTrovata):
+            self.agenda.cancella(999)
